@@ -3,13 +3,15 @@ Terraform example plugin
 
 ### Build 
 
-    go build -o terraform-provider-dummy
+    go get github.com/WeltN24/la-terraform-plugin-example
 
 ### Use
 Install the plugin https://www.terraform.io/docs/plugins/basics.html#installing-a-plugin
 
+Example ~/.terraformrc: 
+
     providers {
-        dummy = "$GOPATH/src/github.com/WeltN24/la-terraform-plugin-example/terraform-provider-dummy"
+        chucks = "$GOPATH/bin/la-terraform-plugin-example"
     }
 
 
@@ -19,7 +21,7 @@ or copy it into the project directory
     
     data "chucks_jokes" "foo" {}
     output "joke" {
-        value = "${data.dummy_server.foo.joke}"
+        value = "${data.chucks_jokes.foo.joke}"
     }
 
 ### For joke with id
@@ -29,5 +31,5 @@ or copy it into the project directory
     }
 
     output "joke" {
-        value = "${data.dummy_server.foo.joke}"
+        value = "${data.chucks_jokes.foo.joke}"
     }
